@@ -1,0 +1,159 @@
+/* GREY BACKGROUND WITH NO MARGIN */
+body{
+    background: darkgrey;
+    height: 2000px;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+    font: bold 18px 'segoe ui';
+    color: grey
+}
+  
+  /* WHITE HEADER */
+header{
+    background: white;
+    height: 70px;
+    margin: auto;
+}
+  
+/* #DROPDOWNMENU IS THE MAIN BLOCK WHICH INCLUDE :
+- HIDDEN CHECKBOX (OPACITY 0%)
+- VISIBLE TOGGLE BUTTON
+- VISIBLE BUTTON ANIMATION (TOP, MIDDLE, BOTTOM BAR)
+- LIST BLOCK INCLUDING LIST ELEMENT*/
+#dropdownmenu{
+    position: fixed;
+    width: 150px;
+    right: 20px;
+    top: 20px;
+    height: 36px;
+}
+  
+#dropdownmenu .list{
+    position: relative;
+    margin: auto;
+    width: auto;
+    background: none;
+    top: -30px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.list_element{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    width: 150px;
+    border-radius: 5px;
+    height: 35px;
+    box-shadow: 0px 0px 2px grey;
+    transition-duration: 2s;
+}
+  
+.list_element:hover, .list_element:active{
+    transform: none;
+    background: #f2bc52;
+    color: white;
+    transition-duration: .2s;
+}
+
+  /* VISIBLE BUTTON AND CHECKBOX SHARE THE SAME SIZE AND POSITION
+  SET CHECKBOX OPACITY TO 1 TO SEE IT */
+#visible_button{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    top: -43px;
+    left: 112px;
+    height: 26px;
+    width: 28px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    border-radius: 4px;
+}
+  
+#checkbox {
+    width: 38px;
+    height: 36px;
+    z-index: 9999;
+    position: relative;
+    left: 108px;
+    top: -3px;
+    opacity: 0;
+    cursor: pointer; /* SET POINTER TO GET THE STANDARD LINK HOVER */
+}
+  
+/* ELEMENTS OF ANIMATION */
+#top_bar{
+    position:relative;
+    height: 4px;
+    width: 28px;
+    border-radius: 2px;
+    background: #f2bc52;
+    box-shadow: 1px 1px 2px grey;
+    transition-duration: 1s;
+}
+
+#middle_bar{
+    height: 4px;
+    width: 28px;
+    border-radius: 2px;
+    background: #f2bc52;
+    box-shadow: 1px 1px 2px grey;
+    transition-duration: .5s;
+}
+  
+#bottom_bar{
+    position:relative;
+    height: 4px;
+    width: 28px;
+    border-radius: 2px;
+    background: #f2bc52;
+    box-shadow: 1px 1px 2px grey;
+    transition-duration: 1s;
+}
+  
+/* ANIMATION */
+  
+#checkbox:not(:checked) ~ #visible_button #top_bar{
+    transform: rotate(45deg) translate(7.5px, 7.5px);
+    background: grey;
+    transition-delay: .5s;
+    box-shadow: 1.5px 0.25px 2px grey;
+}
+  
+#checkbox:not(:checked) ~ #visible_button #bottom_bar{
+    transform: rotate(-45deg) translate(8px, -8px);
+    background: grey;
+    transition-delay: .5s;
+    box-shadow: -1px 1px 2px grey;
+}
+  
+#checkbox:not(:checked) ~ #visible_button #middle_bar{
+    opacity: 0;
+}
+  
+#checkbox:checked ~ #middle_bar{
+    transition-delay: 1s;
+}
+  
+/* HIDE LIST BLOCK WHEN CHECKBOX IS CHECKED AND VICE VERSA */
+  
+#checkbox:checked ~ .list{
+    visibility: hidden;
+    opacity: 0;
+    transition-duration: .5s;
+}
+
+#checkbox:not(:checked) ~ .list{
+    visibility: visible;
+    transition-duration: .5s;
+}
